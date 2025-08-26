@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Unique Portfolio Design System - Custom colors, gradients, and animations */
+
+@layer base {
+  :root {
+    /* Modern Portfolio Color Palette */
+    --background: 220 15% 8%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 95%;
+
+    /* Electric blue primary with vibrant accent */
+    --primary: 205 100% 60%;
+    --primary-foreground: 220 15% 8%;
+    --primary-glow: 205 100% 75%;
+
+    /* Rich purple secondary */
+    --secondary: 260 60% 45%;
+    --secondary-foreground: 220 10% 95%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 70%;
+
+    /* Vibrant accent colors */
+    --accent: 285 100% 65%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 220 10% 95%;
+
+    --border: 220 15% 25%;
+    --input: 220 15% 20%;
+    --ring: 205 100% 60%;
+
+    /* Custom Portfolio Variables */
+    --hero-gradient: linear-gradient(135deg, hsl(205 100% 60%) 0%, hsl(260 60% 45%) 50%, hsl(285 100% 65%) 100%);
+    --card-gradient: linear-gradient(145deg, hsl(220 15% 12%) 0%, hsl(220 15% 8%) 100%);
+    --text-gradient: linear-gradient(90deg, hsl(205 100% 75%), hsl(285 100% 75%));
+    
+    /* Glow effects */
+    --glow-primary: 0 0 30px hsl(205 100% 60% / 0.3);
+    --glow-accent: 0 0 25px hsl(285 100% 65% / 0.2);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode (if needed later) */
+  .light {
+    --background: 220 10% 95%;
+    --foreground: 220 15% 8%;
+    --card: 220 10% 98%;
+    --card-foreground: 220 15% 8%;
+    --primary: 205 100% 50%;
+    --secondary: 260 60% 40%;
+    --accent: 285 100% 60%;
+    --border: 220 15% 85%;
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 15% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
+
+@layer components {
+  /* Portfolio specific components */
+  .hero-text {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glow-card {
+    box-shadow: var(--glow-primary);
+    transition: var(--transition-smooth);
+  }
+  
+  .glow-card:hover {
+    box-shadow: var(--glow-primary), var(--glow-accent);
+    transform: translateY(-2px);
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
